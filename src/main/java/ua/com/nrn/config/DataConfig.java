@@ -46,7 +46,7 @@ public class DataConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
-        factoryBean.setPackagesToScan("ua.com.owu.entity");
+        factoryBean.setPackagesToScan("ua.com.nrn.entity");
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
