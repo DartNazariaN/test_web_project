@@ -36,11 +36,20 @@
             <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Contact</a>
             </li>
-            <sec:authorize access="isAnonymous()">
+            <%--<sec:authorize access="isAnonymous()">--%>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-toggle="modal" data-target="#signUp">Sign in</a>
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#sigIn">Sign in</a>
                 </li>
-            </sec:authorize>
+            <%--</sec:authorize>--%>
+            <li class="nav-item">
+                <a>or</a>
+            </li>
+            <%--<sec:authorize access="isAnonymous()">--%>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#signUp">Sign up</a>
+            </li>
+            <%--</sec:authorize>--%>
+
             <li class="nav-item">
                 <sec:authorize access="isAuthenticated()">
                     <form action="/logoutME" method="post" class="form-inline my-2 my-lg-0">
@@ -81,6 +90,7 @@
         </a>
     </div>
 </div>
+<%--Registration form--%>
 <div class="container-fluid">
     <div class="container">
         <div class="row text-center">
@@ -91,7 +101,7 @@
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="" name="username" placeholder="username">
                         <input type="" name="password" placeholder="password">
-                        <input type="" name="age" placeholder="age">
+                        <%--<input type="" name="age" placeholder="age">--%>
                         <input type="submit" name="Відправити" placeholder="">
                     </form>
                 <%--</sec:authorize>--%>
@@ -132,18 +142,18 @@
     </div>
 </div>
 <%--Modal WINDOW: Sign in--%>
-<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+<div class="modal fade" id="sigIn" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="signUpLabel">Your Data</h5>
+                <h5 class="modal-title" >Your Data</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="su" method="post" enctype="multipart/form-data">
+                    <form action="sigInUser" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <div class="form-froup">
                             <%--@declare id="exampleinputemail"--%>
@@ -166,6 +176,50 @@
         </div>
     </div>
 </div>
+
+<%--Modal WINDOW: Sign up--%>
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signUpLabel456454545">Registration form</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/saveUser" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <div class="form-froup">
+                            <%--@declare id="exampleinputemail"--%>
+                            <label for="exampleInputEmail">Enter your name</label>
+                            <input type="" name="username" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="username">
+                            <small id="emailHelp" class="form-text text-muted">Please, enter your name</small>
+                        </div>
+                        <div class="form-froup">
+                            <%--@declare id="exampleinputemail"--%>
+                            <label for="exampleInputEmail">Enter your password</label>
+                            <input type="" name="password" class="form-control" id="exampleInputEmail" placeholder="password">
+                            <small id="emailHelp" class="form-text text-muted">Please, enter your password</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="saveAvatar" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" placeholder="file">
+    <input type="submit">
+</form>
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
