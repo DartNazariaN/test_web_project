@@ -16,7 +16,6 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int age;
-    private String avatar;
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -26,18 +25,12 @@ public class User implements UserDetails {
     private boolean credsNonExp = true;
     private boolean enable = true;
 
-    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-   // @JoinTable(name = "user_avatar", joinColumns =@JoinColumn(name = "user"), inverseJoinColumns = @JoinColumn(name = "avatarka"))
-    private Avatarka avatarka;
-
     public User() {
     }
 
-    public User(int age, String avatar, String username, Avatarka avatarka) {
+    public User(int age, String avatar, String username) {
         this.age = age;
-        this.avatar = avatar;
         this.username = username;
-        this.avatarka = avatarka;
     }
 
     public int getId() {
@@ -46,14 +39,6 @@ public class User implements UserDetails {
 
     public int getAge() {
         return age;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     @Override
